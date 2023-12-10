@@ -3,89 +3,83 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <title>Advanced JSP Example</title>
+    <title>JSP Example</title>
 </head>
 <body>
-    <h1>Welcome to my Advanced JSP Page!</h1>
+    <h1>Welcome to a JSP Example</h1>
     
-    <%-- Functionality 1: Display the current date and time --%>
-    <p>Current Date and Time: <%= new java.util.Date() %></p>
+    <%-- Declaration and Initialization --%>
+    <%
+        String greeting = "Hello, World!";
+        int number = 42;
+        double pi = 3.14159265359;
+    %>
     
-    <%-- Functionality 2: Loop and display numbers from 1 to 5 --%>
-    <p>Numbers from 1 to 5:
-    <%
-        for (int i = 1; i <= 5; i++) {
-    %>
-        <%= i %> 
-    <%
-        }
-    %>
-    </p>
+    <p><strong><%= greeting %></strong></p>
     
-    <%-- Functionality 3: Use a method to calculate the square of a number --%>
-    <%
-        int num = 7;
-        int square = calculateSquare(num);
-    %>
-    <p>The square of <%= num %> is <%= square %></p>
+    <hr />
     
-    <%-- Functionality 4: Create and display an array of fruits --%>
+    <%-- Conditional Statements --%>
     <%
-        String[] fruits = {"Apple", "Banana", "Orange", "Grapes"};
-    %>
-    <p>Fruits: 
-    <%
-        for (String fruit : fruits) {
-    %>
-        <%= fruit %> 
-    <%
-        }
-    %>
-    </p>
-    
-    <%-- Functionality 5: Conditionally display a message based on a boolean variable --%>
-    <%
-        boolean isMember = true;
+        boolean isJavaFun = true;
     %>
     <p>
-    <%
-        if (isMember) {
-    %>
-        Welcome, Member!
-    <%
-        } else {
-    %>
-        Join our community!
-    <%
-        }
-    %>
+        <% if (isJavaFun) { %>
+            Java is fun!
+        <% } else { %>
+            Java is not fun!
+        <% } %>
     </p>
     
-    <%-- Functionality 6: Include an external JSP file --%>
-    <jsp:include page="external.jsp" />
+    <hr />
     
-    <%-- Functionality 7: Redirect to another page --%>
-    <%
-        // Uncomment the line below to enable redirection
-        // response.sendRedirect("anotherPage.jsp");
-    %>
+    <%-- Looping --%>
+    <p>Counting from 1 to 5:</p>
+    <ul>
+        <% for (int i = 1; i <= 5; i++) { %>
+            <li><%= i %></li>
+        <% } %>
+    </ul>
     
-    <%-- Functionality 8: Set and retrieve session attributes --%>
-    <%
-        session.setAttribute("username", "Alice");
-        String sessionUsername = (String) session.getAttribute("username");
-    %>
-    <p>Session Username: <%= sessionUsername %></p>
+    <hr />
     
-    <%-- Functionality 9: Use request parameters --%>
-    <%
-        String paramValue = request.getParameter("paramName");
-    %>
-    <p>Parameter Value: <%= paramValue %></p>
+    <%-- Including Another JSP --%>
+    <p>Including another JSP file:</p>
+    <jsp:include page="included.jsp" />
     
-    <%-- Functionality 10: Use JSP comments --%>
+    <hr />
+    
+    <%-- Request Parameters --%>
+    <p>Request Parameters:</p>
+    <ul>
+        <%
+            String paramName = "name";
+            String paramValue = request.getParameter(paramName);
+        %>
+        <li><strong><%= paramName %>:</strong> <%= paramValue %></li>
+    </ul>
+    
+    <hr />
+    
+    <%-- Session Attributes --%>
+    <p>Session Attribute:</p>
+    <ul>
+        <%
+            String sessionAttrName = "username";
+            String sessionAttrValue = (String) session.getAttribute(sessionAttrName);
+        %>
+        <li><strong><%= sessionAttrName %>:</strong> <%= sessionAttrValue %></li>
+    </ul>
+    
+    <hr />
+    
+    <%-- Exception Handling --%>
     <%
-        // This is a JSP comment. It won't be visible in the output.
+        try {
+            int result = 10 / 0; // Divide by zero to trigger an exception
+        } catch (Exception e) {
+            out.println("An error occurred: " + e.getMessage());
+        }
     %>
     
 </body>
