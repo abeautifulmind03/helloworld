@@ -1,86 +1,37 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
-<!DOCTYPE html>
-<html>
-<head>
-    <meta charset="UTF-8">
-    <title>JSP Example</title>
-</head>
-<body>
-    <h1>Welcome to a JSP Example</h1>
+<form action="action_page.php">
+  <div class="container">
+    <h1>Hello Abdur Rahim</h1>
+    <p>Please fill in this form to create an account.</p>
+    <hr>
+     
+    <label for="Name"><b>Enter Name</b></label>
+    <input type="text" placeholder="Enter Full Name" name="Name" id="Name" required>
+    <br>
     
-    <%-- Declaration and Initialization --%>
-    <%
-        String greeting = "Hello, World!";
-        int number = 42;
-        double pi = 3.14159265359;
-    %>
-    
-    <p><strong><%= greeting %></strong></p>
-    
-    <hr />
-    
-    <%-- Conditional Statements --%>
-    <%
-        boolean isJavaFun = true;
-    %>
-    <p>
-        <% if (isJavaFun) { %>
-            Java is fun!
-        <% } else { %>
-            Java is not fun!
-        <% } %>
-    </p>
-    
-    <hr />
-    
-    <%-- Looping --%>
-    <p>Counting from 1 to 5:</p>
-    <ul>
-        <% for (int i = 1; i <= 5; i++) { %>
-            <li><%= i %></li>
-        <% } %>
-    </ul>
-    
-    <hr />
-    
-    <%-- Including Another JSP --%>
-    <p>Including another JSP file:</p>
-    <jsp:include page="included.jsp" />
-    
-    <hr />
-    
-    <%-- Request Parameters --%>
-    <p>Request Parameters:</p>
-    <ul>
-        <%
-            String paramName = "name";
-            String paramValue = request.getParameter(paramName);
-        %>
-        <li><strong><%= paramName %>:</strong> <%= paramValue %></li>
-    </ul>
-    
-    <hr />
-    
-    <%-- Session Attributes --%>
-    <p>Session Attribute:</p>
-    <ul>
-        <%
-            String sessionAttrName = "username";
-            String sessionAttrValue = (String) session.getAttribute(sessionAttrName);
-        %>
-        <li><strong><%= sessionAttrName %>:</strong> <%= sessionAttrValue %></li>
-    </ul>
-    
-    <hr />
-    
-    <%-- Exception Handling --%>
-    <%
-        try {
-            int result = 10 / 0; // Divide by zero to trigger an exception
-        } catch (Exception e) {
-            out.println("An error occurred: " + e.getMessage());
-        }
-    %>
-    
-</body>
-</html>
+    <label for="mobile"><b>Enter mobile</b></label>
+    <input type="text" placeholder="Enter moible number" name="mobile" id="mobile" required>
+    <br>
+
+    <label for="email"><b>Enter Email</b></label>
+    <input type="text" placeholder="Enter Email" name="email" id="email" required>
+    <br>
+
+    <label for="psw"><b>Password</b></label>
+    <input type="password" placeholder="Enter Password" name="psw" id="psw" required>
+    <br>
+
+    <label for="psw-repeat"><b>Repeat Password</b></label>
+    <input type="password" placeholder="Repeat Password" name="psw-repeat" id="psw-repeat" required>
+    <hr>
+    <br>
+    <p>By creating an account you agree to our <a href="#">Terms & Privacy</a>.</p>
+    <button type="submit" class="registerbtn">Register</button>
+  </div>
+  <div class="container signin">
+    <p>Already have an account? <a href="#">Sign in</a>.</p>
+  </div>
+
+   <h1> Thank you, Happy Learning </h1>
+
+  
+</form>
